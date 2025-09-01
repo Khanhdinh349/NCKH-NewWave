@@ -1,0 +1,10 @@
+{
+  "seed": 1337,
+  "split": {
+    "train": 0.7,
+    "val": 0.15,
+    "test": 0.15
+  },
+  "source": "data/raw/rice",
+  "target_cls": "data/processed/classification"
+}

@@ -1,0 +1,14 @@
+[
+    {
+        "plant": "xương rồi ",
+        " đặc điểm chính": "Thân cây mọng nước, có gai, không lá, màu xanh. Thường được trồng làm cảnh hoặc làm hàng rào.",
+        "temperature": "20-35",
+        "humidity": "50-70"
+    },
+    {
+        "plant": "hoa hồng",
+        "features": "Cây bụi hoặc leo, thân có gai, hoa đa dạng về màu sắc và hình dáng, thơm.",
+        "temperature": "18-25",
+        "humidity": "70-80"
+    }
+]

@@ -1,0 +1,4 @@
+train: data/processed/detection/images/train
+val: data/processed/detection/images/val
+test: data/processed/detection/images/test
+names: [BLB, Leaf_Blast, Brown_Spot, Healthy]
