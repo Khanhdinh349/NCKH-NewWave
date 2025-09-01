@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PlantCare — Quản lý cây trồng</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="homepage.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#">
+        <svg viewBox="0 0 24 24" fill="none" width="28" height="28" aria-hidden="true">
+          <path d="M20.5 3.5c-8 0-14 6-14 14 0 1.9.4 3.6 1.1 5 7.9.2 14-6 14-14 0-1.9-.4-3.6-1.1-5Z" fill="#7bc47f"/>
+          <path d="M5 18c6-4 7-9 7-15" stroke="#2e7d32" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        PlantCare
+      </a>
+      <nav class="nav">
+        <a class="nav-link" href="#">Dashboard</a>
+        <a class="nav-link" href="#plants">Cây của tôi</a>
+        <a class="nav-link" href="#sensors">Cảm biến</a>
+        <a class="nav-link" href="#guide">Cẩm nang</a>
+      </nav>
+      <div class="actions">
+        <button class="btn ghost">Đăng nhập</button>
+        <button class="btn primary">Bắt đầu</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <h1>Quản lý cây trồng thông minh</h1>
+        <p>Theo dõi sức khỏe, nhận nhắc nhở tưới nước và giám sát cảm biến theo thời gian thực.</p>
+        <div class="hero-cta">
+          <a class="btn primary" href="#plants">Thêm cây đầu tiên</a>
+          <a class="btn ghost" href="#features">Xem tính năng</a>
+        </div>
+        <div class="kpis">
+          <div class="kpi"><div class="num">24</div><div class="lbl">Cây đang theo dõi</div></div>
+          <div class="kpi"><div class="num">7</div><div class="lbl">Cảm biến online</div></div>
+          <div class="kpi"><div class="num">3</div><div class="lbl">Lịch tưới hôm nay</div></div>
+          <div class="kpi"><div class="num">1</div><div class="lbl">Cảnh báo</div></div>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <svg class="hero-plant" viewBox="0 0 360 320">
+          <ellipse cx="180" cy="260" rx="110" ry="18" fill="#cfd8dc"/>
+          <path d="M160 210c-20-36-8-78 38-108-6 44-2 74 14 100" fill="#7bc47f"/>
+          <path d="M210 210c-8-34 6-64 44-88-2 36-4 56-20 80" fill="#5aa469"/>
+          <path d="M132 210c-14-30-2-60 34-84-2 30 0 50 10 70" fill="#5aa469"/>
+          <rect x="120" y="212" width="120" height="62" rx="12" fill="#f2994a"/>
+          <rect x="132" y="205" width="96" height="14" rx="7" fill="#f6ad6f"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section" id="features">
+    <div class="container grid-3">
+      <article class="card feature">
+        <div class="icon">🩺</div>
+        <h3>Giám sát sức khỏe</h3>
+        <p>Theo dõi nhiệt độ, độ ẩm không khí/đất và ánh sáng để tối ưu phát triển.</p>
+      </article>
+      <article class="card feature">
+        <div class="icon">🗓️</div>
+        <h3>Nhắc nhở chăm sóc</h3>
+        <p>Lịch tưới/bón phân tự động, gửi thông báo trước giờ chăm cây.</p>
+      </article>
+      <article class="card feature">
+        <div class="icon">⚠️</div>
+        <h3>Nhận diện & cảnh báo</h3>
+        <p>Phát hiện sớm tình trạng lá bất thường và cảnh báo kịp thời.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Plants -->
+  <section class="section" id="plants">
+    <div class="container">
+      <div class="section-head">
+        <h2>Cây của tôi</h2>
+        <button class="btn small">+ Thêm cây</button>
+      </div>
+      <div class="plant-grid">
+        <!-- Mỗi card được bọc bởi thẻ <a> để điều hướng -->
+        <a class="card plant card-link" href="/Web/homepage/plant/plant.html">
+          <div class="top"><span class="emoji">🪴</span><span class="pill ok">Khỏe</span></div>
+          <h4>Aloe Vera</h4>
+          <ul><li>💧 Tưới: còn 3 ngày</li><li>🌡️ 26°C • 💦 58%</li><li>☀️ Sáng gián tiếp</li></ul>
+        </a>
+
+        <a class="card plant card-link" href="/Web/homepage/plant/plant.html">
+          <div class="top"><span class="emoji">🌿</span><span class="pill warn">Khô đất</span></div>
+          <h4>Snake Plant</h4>
+          <ul><li>💧 Tưới: hôm nay</li><li>🌡️ 28°C • 💦 41%</li><li>☀️ Ánh sáng yếu</li></ul>
+        </a>
+
+        <a class="card plant card-link" href="/Web/homepage/plant/plant.html">
+          <div class="top"><span class="emoji">🌵</span><span class="pill ok">Ổn định</span></div>
+          <h4>Cactus</h4>
+          <ul><li>💧 10 ngày nữa</li><li>🌡️ 30°C • 💦 35%</li><li>☀️ Nắng trực tiếp</li></ul>
+        </a>
+
+        <a class="card plant card-link" href="/Web/homepage/plant/plant.html">
+          <div class="top"><span class="emoji">🌱</span><span class="pill alert">Nấm lá</span></div>
+          <h4>Rubber Plant</h4>
+          <ul><li>💧 1 ngày nữa</li><li>🌡️ 27°C • 💦 70%</li><li>☀️ Sáng gián tiếp</li></ul>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2025 PlantCare. Made for plant lovers 🌿</p>
+      <nav class="footer-nav">
+        <a href="#">Điều khoản</a>
+        <a href="#">Bảo mật</a>
+        <a href="#">Hỗ trợ</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

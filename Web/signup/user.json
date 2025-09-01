@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1756613795299,
+    "name": "KHANH NGHIEM",
+    "email": "khanhdinh349@gmail.com",
+    "createdAt": "2025-08-31T04:16:35.300Z",
+    "passwordHash": "619bf74a84a52a1cb50a025654076dceb92a911c8929d8a9aec158c35ae359db"
+  },
+  {
+    "id": 1756719644293,
+    "name": "KHANH NGHIEM",
+    "email": "khanhdin9@gmail.com",
+    "createdAt": "2025-09-01T09:40:44.293Z",
+    "passwordHash": "932f3c1b56257ce8539ac269d7aab42550dacf8818d075f0bdf1990562aae3ef"
+  },
+  {
+    "id": 1756719940938,
+    "name": "Khanh Dinh Nghiem",
+    "email": "khanhdinh3@gmail.com",
+    "password": "123123",
+    "createdAt": "2025-09-01T09:45:40.938Z"
+  },
+  {
+    "id": 1756720143906,
+    "name": "KHANH NGHIEM",
+    "email": "khanh349@gmail.com",
+    "password": "123123",
+    "createdAt": "2025-09-01T09:49:03.906Z"
+  },
+  {
+    "id": 1756720209890,
+    "name": "KHANH NGHIEM",
+    "email": "khanhdi349@gmail.com",
+    "password": "123123",
+    "createdAt": "2025-09-01T09:50:09.890Z"
+  },
+  {
+    "id": 1756720705324,
+    "name": "KHANH NGHIEM",
+    "email": "khanhdin349@gmail.com",
+    "createdAt": "2025-09-01T09:58:25.324Z",
+    "passwordHash": "96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e"
+  }
+]

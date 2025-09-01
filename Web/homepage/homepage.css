@@ -1,0 +1,150 @@
+/* ================== GLOBAL / HOMEPAGE ================== */
+:root{
+  --bg:#f6f8f7;
+  --surface:#ffffff;
+  --text:#0f172a;
+  --muted:#5b6575;
+  --primary:#2e7d32;
+  --primary-weak:#e8f5e9;
+  --shadow:0 10px 30px rgba(16,24,40,.10);
+  --radius:16px;
+  --ring:0 0 0 3px rgba(46,125,50,.15);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+.container{max-width:1120px;margin:0 auto;padding:0 20px}
+.section{padding:40px 0}
+
+/* ---------- Header ---------- */
+.site-header{
+  position:sticky;top:0;z-index:40;
+  background:rgba(255,255,255,.85);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid #e7eaee;
+}
+.header-inner{height:66px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;gap:10px;align-items:center;text-decoration:none;color:inherit;font-weight:800}
+.brand svg{flex:0 0 28px}
+.nav{display:flex;gap:20px}
+.nav a{color:var(--muted);text-decoration:none;font-weight:600;transition:.2s}
+.nav a:hover{color:var(--text)}
+.actions{display:flex;gap:10px}
+.btn{
+  border:0;border-radius:999px;padding:10px 16px;
+  font-weight:700;cursor:pointer;transition:.18s ease;
+  display:inline-flex;align-items:center;gap:8px;
+}
+.btn:focus-visible{outline:none;box-shadow:var(--ring)}
+.btn.primary{background:var(--primary);color:#fff}
+.btn.primary:hover{filter:brightness(.95)}
+.btn.ghost{background:transparent;border:1px solid #d1d5db;color:var(--text)}
+.btn.ghost:hover{background:#f3f4f6}
+.btn.small{padding:8px 12px;font-size:.9rem}
+
+/* ---------- Hero ---------- */
+.hero{padding:56px 0 32px;background:linear-gradient(145deg,#eff8f1 0%,#ffffff 55%)}
+.hero-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:center}
+.hero-copy h1{font-size:46px;line-height:1.1;margin-bottom:10px;font-weight:800}
+.hero-copy p{color:var(--muted);margin-bottom:18px}
+.hero-cta{display:flex;gap:12px;margin-bottom:20px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.kpi{background:var(--surface);border-radius:14px;padding:14px 16px;box-shadow:var(--shadow);text-align:center}
+.kpi .num{font-size:24px;font-weight:800}
+.kpi .lbl{color:var(--muted);font-size:.92rem}
+
+/* Hero art card */
+.hero-art{
+  background:linear-gradient(135deg,#e9fbea 0%,#d9f5e0 100%);
+  border-radius:34px; min-height:260px; box-shadow:var(--shadow);
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+}
+.hero-plant{width:72%;max-width:360px;height:auto;opacity:.95}
+
+/* ---------- Cards & Grids ---------- */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.card{
+  background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow);
+  padding:22px;transition:transform .2s, box-shadow .2s;
+}
+.card:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(16,24,40,.14)}
+.feature .icon{
+  width:44px;height:44px;border-radius:12px;
+  background:var(--primary-weak);display:inline-flex;align-items:center;justify-content:center;
+  color:var(--primary);margin-bottom:8px;font-size:20px;
+}
+.feature h3{margin:2px 0 4px}
+.feature p{color:var(--muted)}
+
+/* ---------- Plants (homepage) ---------- */
+.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.section-head.tight{margin-bottom:8px}
+.plant-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.plant .top{display:flex;align-items:center;justify-content:space-between}
+.plant .emoji{font-size:26px}
+.plant h4{margin:6px 0}
+.plant ul{list-style:none;color:var(--muted);display:grid;gap:4px}
+.pill{padding:4px 10px;border-radius:999px;font-weight:700;font-size:.8rem}
+.pill.ok{background:#e8f5e9;color:#1b5e20}
+.pill.warn{background:#fff4e5;color:#b54708}
+.pill.alert{background:#fee4e2;color:#b42318}
+
+/* Cards click → trang chi tiết */
+.card-link{display:block;text-decoration:none;color:inherit}
+.card-link:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(16,24,40,.14)}
+
+/* ---------- Sensors & Tasks (homepage) ---------- */
+.sensor-list{list-style:none;display:grid;gap:12px;margin-top:6px}
+.sensor-list li{display:grid;grid-template-columns:1.4fr 2fr auto;gap:10px;align-items:center}
+.bar{height:8px;background:#e5e7eb;border-radius:999px;overflow:hidden}
+.bar>span{display:block;height:100%;background:var(--primary)}
+.task-list{list-style:none;display:grid;gap:10px;margin-top:8px}
+.task-list li{display:flex;gap:10px;align-items:center;justify-content:space-between}
+.badge{background:#eef2ff;color:#3730a3;border-radius:999px;padding:4px 10px;font-weight:700;font-size:.8rem}
+.badge.due{background:#fee4e2;color:#b42318}
+
+/* ---------- Footer ---------- */
+.site-footer{padding:26px 0;border-top:1px solid #e7eaee;background:#fff;color:#667085}
+.footer-inner{display:flex;align-items:center;justify-content:space-between}
+.footer-nav{display:flex;gap:14px}
+.footer-nav a{color:#667085;text-decoration:none}
+.footer-nav a:hover{color:#344054}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1024px){
+  .grid-3{grid-template-columns:1fr 1fr}
+  .plant-grid{grid-template-columns:repeat(3,1fr)}
+  .hero-copy h1{font-size:38px}
+}
+@media (max-width:768px){
+  .nav{display:none}
+  .hero-inner{grid-template-columns:1fr}
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .grid-2{grid-template-columns:1fr}
+  .grid-3{grid-template-columns:1fr}
+  .plant-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:480px){
+  .plant-grid{grid-template-columns:1fr}
+  .hero-copy h1{font-size:32px}
+}
+
+/* ---------- Dark mode (tuỳ chọn qua hệ thống) ---------- */
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0b1220; --surface:#0f182a; --text:#ecf2ff; --muted:#a8b3cf;
+    --primary:#7bd486; --primary-weak:#10331a; --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+  .site-header{background:rgba(15,24,42,.82);border-bottom:1px solid #1f2a3a}
+  .footer-nav a{color:#a8b3cf}
+  .footer-nav a:hover{color:#dbe6ff}
+  .bar{background:#1e293b}
+}

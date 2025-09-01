@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>PlantCare — Chi tiết cây</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="homepage.css"/>
+  <link rel="stylesheet" href="/Web/homepage/plant/plant.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">PlantCare</a>
+      <nav class="nav">
+        <a class="nav-link" href="index.html#plants">Cây của tôi</a>
+        <a class="nav-link" href="index.html#sensors">Cảm biến</a>
+      </nav>
+      <div class="actions">
+        <a class="btn ghost" href="index.html">← Quay lại</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="plant-title">Cây</h2>
+        <span class="pill ok" id="status-pill">Đang theo dõi</span>
+      </div>
+
+      <div class="grid-2">
+        <!-- Card dữ liệu -->
+        <article class="card">
+          <div class="section-head tight"><h3>Dữ liệu cảm biến</h3></div>
+          <div class="sensor-summary">
+            <div class="sensor-item">
+              <div class="label">🌡️ Nhiệt độ</div>
+              <div class="value"><span id="temp-val">--</span> °C</div>
+            </div>
+            <div class="sensor-item">
+              <div class="label">💦 Độ ẩm không khí</div>
+              <div class="value"><span id="humid-val">--</span> %</div>
+            </div>
+            <div class="sensor-item">
+              <div class="label">🌱 Độ ẩm đất</div>
+              <div class="value"><span id="soil-val">--</span> %</div>
+            </div>
+          </div>
+          <canvas id="sensorChart" height="100"></canvas>
+        </article>
+
+        <!-- Card điều khiển -->
+        <article class="card">
+          <div class="section-head tight"><h3>Điều khiển</h3></div>
+          <label class="switch-label">
+            <input type="checkbox" id="auto-mode">
+            <span class="switch-ui"></span>
+            Chế độ tự động
+          </label>
+          <div class="control-grid">
+            <button class="btn device" id="btn-pump" data-dev="pump">💧 Bơm nước</button>
+            <button class="btn device" id="btn-light" data-dev="light">💡 Đèn</button>
+          </div>
+          <hr/>
+          <h4>Ngưỡng tự động</h4>
+          <div class="form-row">
+            <div class="input-group">
+              <label>Soil min %</label>
+              <input type="number" id="soil-min" min="0" max="100" value="40">
+            </div>
+            <div class="input-group">
+              <label>Humidity min %</label>
+              <input type="number" id="humid-min" min="0" max="100" value="45">
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2025 PlantCare. Made for plant lovers 🌿</p>
+    </div>
+  </footer>
+
+  <script>
+    // Lấy query name
+    const p = new URLSearchParams(location.search);
+    document.getElementById("plant-title").textContent = p.get("name") || "Cây";
+
+    // State
+    let state = {auto:false,pump:false,light:false,soilMin:40,humidMin:45};
+
+    const autoChk=document.getElementById("auto-mode");
+    const btnPump=document.getElementById("btn-pump");
+    const btnLight=document.getElementById("btn-light");
+    const soilMin=document.getElementById("soil-min");
+    const humidMin=document.getElementById("humid-min");
+
+    autoChk.addEventListener("change",()=>{state.auto=autoChk.checked;refresh();});
+    soilMin.addEventListener("change",()=>{state.soilMin=+soilMin.value;});
+    humidMin.addEventListener("change",()=>{state.humidMin=+humidMin.value;});
+
+    function toggle(dev){state[dev]=!state[dev];refresh();}
+    btnPump.onclick=()=>toggle("pump");
+    btnLight.onclick=()=>toggle("light");
+
+    function refresh(){
+      [btnPump,btnLight].forEach(b=>{
+        b.disabled=autoChk.checked;
+        b.classList.toggle("device-on", state[b.dataset.dev]);
+      });
+    }
+
+    // Chart
+    const ctx=document.getElementById("sensorChart");
+    const labels=[],tData=[],hData=[],sData=[];
+    const chart=new Chart(ctx,{type:'line',data:{
+      labels:labels,
+      datasets:[
+        {label:"Temp °C",data:tData,borderColor:"#f87171"},
+        {label:"Humidity %",data:hData,borderColor:"#60a5fa"},
+        {label:"Soil %",data:sData,borderColor:"#34d399"}
+      ]
+    },options:{responsive:true,scales:{y:{beginAtZero:true,max:100}}}});
+
+    function pushData(t,h,s){
+      labels.push(new Date().toLocaleTimeString());
+      tData.push(t);hData.push(h);sData.push(s);
+      if(labels.length>15){labels.shift();tData.shift();hData.shift();sData.shift();}
+      chart.update();
+      document.getElementById("temp-val").textContent=t;
+      document.getElementById("humid-val").textContent=h;
+      document.getElementById("soil-val").textContent=s;
+
+      if(state.auto){
+        state.pump=s<state.soilMin;
+        state.light=t>28;
+      }
+      refresh();
+    }
+
+    setInterval(()=>pushData(
+      (24+Math.random()*6).toFixed(1),
+      Math.floor(40+Math.random()*30),
+      Math.floor(30+Math.random()*40)
+    ),2000);
+  </script>
+</body>
+</html>
