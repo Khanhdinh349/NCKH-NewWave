@@ -1,1 +1,0 @@
-# medalary.github.io
