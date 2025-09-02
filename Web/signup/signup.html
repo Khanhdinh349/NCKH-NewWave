@@ -1,43 +1,88 @@
 <!doctype html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Signup</title>
-  <!-- ĐÚNG đường dẫn: cùng thư mục -->
-  <link rel="stylesheet" href="./style.css"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Đăng ký</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-  <div class="container">
-    <div class="card">
-      <h1>Tạo tài khoản</h1>
-      <p class="sub">Nhập họ tên, email và mật khẩu (≥ 6 ký tự).</p>
+  <main class="center-wrap">
+    <section class="card" role="form" aria-labelledby="signup-title">
+      <header class="card-head">
+        <div class="logo">🌿</div>
+        <h1 id="signup-title">Tạo tài khoản</h1>
+        <p class="sub">Dùng email và mật khẩu mạnh để đăng ký.</p>
+      </header>
 
-      <form id="signup-form" autocomplete="off">
-        <div class="field">
-          <label for="name">Họ tên</label>
-          <input id="name" name="name" type="text" placeholder="VD: Nguyen Van A" required>
-        </div>
+      <form id="signup-form" class="form" autocomplete="off">
+        <label class="field">
+          <span>Họ và tên</span>
+          <input type="text" name="name" placeholder="VD: Nguyen Van A" required />
+        </label>
 
-        <div class="field">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="you@example.com" required>
-        </div>
+        <label class="field">
+          <span>Email</span>
+          <input type="email" name="email" placeholder="you@example.com" required />
+        </label>
 
-        <div class="field">
-          <label for="password">Mật khẩu</label>
-          <input id="password" name="password" type="password" placeholder="Ít nhất 6 ký tự" minlength="6" required>
-          <!-- 👁️ nằm TRONG ô -->
-          <button type="button" id="pwd-eye" class="eye-btn" aria-label="Toggle password">👁️</button>
-        </div>
+        <label class="field password">
+          <span>Mật khẩu</span>
+          <input id="pwd" type="password" name="password" placeholder="Tối thiểu 6 ký tự" minlength="6" required />
+          <button type="button" class="eye" aria-label="Hiện/ẩn mật khẩu"></button>
+        </label>
 
-        <button id="create-btn" type="submit" class="btn">Create</button>
-        <div id="form-msg" class="msg"></div>
+        <!--  xác nhận mật khẩu -->
+        
+        <label class="field password">
+          <span>Nhập lại mật khẩu</span>
+          <input id="pwd2" type="password" name="confirm" placeholder="Nhập lại mật khẩu" minlength="6" required />
+          <button type="button" class="eye" aria-label="Hiện/ẩn mật khẩu"></button>
+        </label>
+       
+
+        <button class="btn primary" type="submit">Tạo tài khoản</button>
+
+        <p class="alt">
+          Đã có tài khoản?
+          <a class="link-strong" href="../login/login.html">Đăng nhập</a>
+        </p>
+        <p id="msg" class="msg" aria-live="polite"></p>
       </form>
-    </div>
-  </div>
+    </section>
 
-  <!-- ĐÚNG đường dẫn: cùng thư mục -->
-  <script src="./app.js"></script>
+    <p class="mini-caption">Grow your plants with care</p>
+  </main>
+
+  <script>
+    // Toggle eye cho tất cả ô mật khẩu
+    document.querySelectorAll('.field.password').forEach(wrap=>{
+      const input = wrap.querySelector('input');
+      const eye = wrap.querySelector('.eye');
+      eye.addEventListener('click', ()=>{
+        input.type = input.type === 'password' ? 'text' : 'password';
+        eye.classList.toggle('active');
+      });
+    });
+
+    // Demo submit (nếu bạn đã có app.js thì bỏ đoạn dưới)
+    document.getElementById('signup-form').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const msg = document.getElementById('msg');
+      msg.textContent = '✅ Đăng ký thành công (demo UI).';
+      msg.className = 'msg ok';
+      window.location.href = '../login/login.html'; // bật nếu muốn chuyển sau khi đăng ký
+    });
+    
+  </script>
+
+  <script src="./signup.js"></script>
 </body>
 </html>

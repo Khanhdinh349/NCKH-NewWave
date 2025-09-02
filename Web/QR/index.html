@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Plant Live Status</title>
+  <link rel="stylesheet" href="./style.css" />
+  <!-- QRCode.js for generating the QR preview (global `QRCode`) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="brand">
+        <div class="logo">🌿</div>
+        <div>
+          <h1 class="title">Plant Live Status</h1>
+          <p class="subtitle">Quét QR để xem thông tin cây theo thời gian thực</p>
+        </div>
+      </div>
+      <span id="plantChip" class="chip">plantId: <span class="mono" id="plantIdChip">—</span></span>
+    </header>
+
+    <section class="grid">
+      <!-- Left: live image + meta -->
+      <div class="card">
+        <h3>Hình ảnh hiện tại</h3>
+        <div class="image-wrap" id="imageWrap">
+          <div class="skeleton" id="imgSkeleton"></div>
+          <img id="plantImage" alt="Ảnh cây" class="hidden" />
+        </div>
+        <div class="footer">
+          <div class="muted" id="imgUpdated">Đang tải ảnh…</div>
+          <button id="btnRefresh" class="btn">Làm mới</button>
+        </div>
+      </div>
+
+      <!-- Right: sensors & schedules -->
+      <div class="card">
+        <h3>Thông tin & Trạng thái</h3>
+        <div class="list" style="margin-bottom:12px">
+          <div class="item"><span class="muted">Tên cây</span><strong id="plantName">—</strong></div>
+          <div class="item"><span class="muted">Vị trí</span><strong id="plantLocation">—</strong></div>
+          <div class="item"><span class="muted">Chế độ</span><strong id="plantMode">—</strong></div>
+        </div>
+
+        <div class="row">
+          <div class="metric" id="mTemp"><span class="dot"></span><div><div>Nhiệt độ</div><div><span class="val" id="tempVal">—</span> <span class="unit">°C</span></div></div></div>
+          <div class="metric" id="mHum"><span class="dot"></span><div><div>Độ ẩm</div><div><span class="val" id="humVal">—</span> <span class="unit">%</span></div></div></div>
+          <div class="metric" id="mSoil"><span class="dot"></span><div><div>Độ ẩm đất</div><div><span class="val" id="soilVal">—</span> <span class="unit">%</span></div></div></div>
+          <div class="metric" id="mLight"><span class="dot"></span><div><div>Cảm biến ánh sáng</div><div><span class="val" id="lightVal">—</span></div></div></div>
+        </div>
+
+        <h3 style="margin-top:14px">Lịch thiết bị</h3>
+        <div class="row">
+          <div class="item"><span>Đèn: <span class="muted">On</span></span><strong id="lightOn">—</strong></div>
+          <div class="item"><span>Đèn: <span class="muted">Off</span></span><strong id="lightOff">—</strong></div>
+          <div class="item"><span>Bơm/Quạt: <span class="muted">On</span></span><strong id="motorOn">—</strong></div>
+          <div class="item"><span>Bơm/Quạt: <span class="muted">Off</span></span><strong id="motorOff">—</strong></div>
+        </div>
+
+        <p id="statusMsg" class="muted" style="margin-top:12px"></p>
+        <p id="errorMsg" class="error hidden"></p>
+
+        <div class="footer">
+          <div style="display:flex; align-items:center"><span class="status-dot" id="statusDot"></span><span id="lastUpdated" class="muted">—</span></div>
+          <button id="btnToggleMode" class="btn accent">Chuyển chế độ (Tự động/Thủ công)</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:16px">
+      <h3>Tạo QR liên kết tới trang này</h3>
+      <p class="muted">URL mẫu: <code class="mono">https://your-domain.com/index.html?plantId=YOUR_ID</code></p>
+      <div id="qrcode"></div>
+    </section>
+  </div>
+
+  <!-- Main app -->
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

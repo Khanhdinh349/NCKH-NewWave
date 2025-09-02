@@ -1,0 +1,45 @@
+:root{
+--bg: #0b0f0c; --card:#111712; --muted:#8fb59f; --text:#e8f3ec;
+--accent:#3ddc84; --accent-2:#1ea464; --danger:#ff6b6b; --warn:#ffd166; --ok:#4dd78a;
+--ring: 0 0 0 2px rgba(61,220,132,.35);
+}
+@media (prefers-color-scheme: light){
+:root{ --bg:#f6fbf7; --card:#ffffff; --muted:#5a7a67; --text:#0b0f0c; --accent:#2fb86f; --accent-2:#158c53; --ring: 0 0 0 2px rgba(21,140,83,.25); }
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; background:var(--bg); color:var(--text)}
+.container{max-width:980px; margin:0 auto; padding:24px}
+.header{display:flex; align-items:center; gap:12px; justify-content:space-between}
+.brand{display:flex; align-items:center; gap:12px}
+.logo{width:40px; height:40px; border-radius:12px; background:linear-gradient(145deg, var(--accent), var(--accent-2)); display:grid; place-items:center; color:white; font-weight:700}
+.title{margin:0; font-size: clamp(20px, 3.5vw, 28px)}
+.subtitle{margin:2px 0 0; color:var(--muted); font-size:14px}
+.chip{padding:6px 10px; border-radius:999px; background:rgba(61,220,132,.1); color:var(--accent); border:1px solid rgba(61,220,132,.25)}
+.grid{display:grid; grid-template-columns:1.2fr .8fr; gap:16px; margin-top:18px}
+@media (max-width: 860px){.grid{grid-template-columns:1fr}}
+.card{background:var(--card); border:1px solid rgba(255,255,255,.06); border-radius:16px; padding:16px; box-shadow: 0 6px 24px rgba(0,0,0,.25)}
+.card h3{margin:0 0 10px; font-size:18px}
+.row{display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px}
+.metric{display:flex; align-items:center; gap:12px; padding:12px; border:1px solid rgba(255,255,255,.06); border-radius:12px}
+.metric .dot{width:10px; height:10px; border-radius:50%; background:var(--muted)}
+.metric .val{font-weight:700}
+.metric .unit{opacity:.8; font-size:12px}
+.good .dot{background:var(--ok)}
+.warn .dot{background:var(--warn)}
+.bad .dot{background:var(--danger)}
+.image-wrap{aspect-ratio: 4/3; border-radius:14px; overflow:hidden; border:1px solid rgba(255,255,255,.08); background:#0a0a0a; display:grid; place-items:center}
+.image-wrap img{width:100%; height:100%; object-fit:cover}
+.skeleton{width:100%; height:100%; background:linear-gradient(90deg, rgba(255,255,255,.05), rgba(255,255,255,.09), rgba(255,255,255,.05)); background-size:200% 100%; animation:shimmer 1.1s infinite}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.list{display:grid; gap:10px}
+.item{display:flex; justify-content:space-between; padding:10px 12px; border:1px dashed rgba(255,255,255,.15); border-radius:10px}
+.muted{color:var(--muted)}
+.footer{display:flex; gap:8px; align-items:center; justify-content:space-between; margin-top:14px}
+.btn{appearance:none; padding:10px 14px; border-radius:10px; border:1px solid rgba(255,255,255,.12); background:transparent; color:var(--text); cursor:pointer}
+.btn:focus{outline:none; box-shadow:var(--ring)}
+.btn.accent{background:linear-gradient(145deg, var(--accent), var(--accent-2)); color:#fff; border:0}
+.status-dot{width:10px;height:10px;border-radius:50%;background:var(--ok); margin-right:8px}
+.error{color:var(--danger)}
+.hidden{display:none}
+.mono{font-family: ui-monospace, Menlo, Consolas, Monaco, monospace}
